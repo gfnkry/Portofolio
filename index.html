@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gfnkry_ | Photography Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Link ke file CSS terpisah -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a onclick="showHome()" class="logo">Gfnkry_</a>
+        <div class="nav-actions">
+            <button id="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <!-- === HOME VIEW === -->
+    <div id="home-view" class="view-section">
+        
+        <!-- Hero -->
+        <section id="hero">
+            <h1>Gfnkry_</h1>
+            <p>Capturing the Essence of the Moment</p>
+            <div class="cta-group">
+                <a href="#categories" class="btn">Portfolio</a>
+                <a href="#contact" class="btn">Contact</a>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="images/Profil1.jpg" alt="Gfnkry Profile">
+                    </div>
+                    <div class="about-text">
+                        <h2>About Me</h2>
+                        <p>Halo, saya Geofanni. Fotografer berbasis di Serang, Banten, dengan keahlian di street dan wedding photography. Saya menangkap momen-momen autentik dengan pendekatan dokumenter dan sentuhan emosional.</p>
+                        <div class="signature">- Gfnkry_</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Navigation -->
+        <section id="categories" class="container">
+            <div class="section-header">
+                <h2>Browse Galleries</h2>
+                <p class="subtitle">Select a category to view full collection</p>
+            </div>
+            
+            <div class="category-nav">
+                <!-- Wedding Card -->
+                <div class="cat-card" onclick="openPage('wedding')">
+                    <img src="/images/wedding/wedding.webp" alt="Wedding Photography">
+                    <div class="cat-overlay">
+                        <span class="cat-title">Wedding Photography</span>
+                    </div>
+                </div>
+                <!-- Graduation Card -->
+                <div class="cat-card" onclick="openPage('wisuda')">
+                    <img src="/images/Wisuda/wisuda.jpg" alt="Graduation">
+                    <div class="cat-overlay">
+                        <span class="cat-title">Graduation</span>
+                    </div>
+                </div>
+                <!-- Landscape & Nature Card -->
+                <div class="cat-card" onclick="openPage('nature')">
+                    <img src="/images/Landscape/DSC06815.jpg" alt="Landscape & Nature">
+                    <div class="cat-overlay">
+                        <span class="cat-title">Landscape & Nature</span>
+                    </div>
+                </div>
+                <!-- Street Card -->
+                <div class="cat-card" onclick="openPage('street')">
+                    <img src="/images/street/DSC00076.jpg" alt="Street">
+                    <div class="cat-overlay">
+                        <span class="cat-title">Street</span>
+                    </div>
+                </div>
+                <!-- Event Documentation Card -->
+                <div class="cat-card" onclick="openPage('event')">
+                    <img src="/images/EventD/Event D.jpg" alt="Event Documentation">
+                    <div class="cat-overlay">
+                        <span class="cat-title">Event Documentation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mini Preview -->
+            <div class="preview-header">
+                <h3>Highlights</h3>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightboxFromHome(this)">
+                    <img src="/images/Highlight/Highlight1.webp">
+                    <div class="overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item" onclick="openLightboxFromHome(this)">
+                    <img src="/images/Highlight/Highlight2.webp">
+                    <div class="overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item" onclick="openLightboxFromHome(this)">
+                    <img src="/images/Highlight/Highlight3.webp">
+                    <div class="overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item" onclick="openLightboxFromHome(this)">
+                    <img src="/images/Highlight/Highlight4.webp">
+                    <div class="overlay"><i class="fas fa-expand"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="container">
+                <h2>Let's Create Together</h2>
+                <p>Ready to capture your special moments?</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/gfnkry_" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/62822123456" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:geokaary@gmail.com" class="social-icon"><i class="far fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2024 Gfnkry_ Photography.</p>
+        </footer>
+    </div>
+
+    <!-- === WEDDING PAGE === -->
+    <div id="wedding-view" class="view-section hidden">
+        <div class="container">
+            <div class="category-header">
+                <h2>Wedding Stories</h2>
+                <div class="back-btn-container">
+                    <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                </div>
+            </div>
+            <div class="masonry-grid">
+                <!-- Gambar akan diisi otomatis oleh JavaScript -->
+            </div>
+            <div class="end-gallery"><p>End of Wedding Gallery</p></div>
+            <div class="back-btn-bottom">
+                <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- === WISUDA PAGE === -->
+    <div id="wisuda-view" class="view-section hidden">
+        <div class="container">
+            <div class="category-header">
+                <h2>Graduation Moments</h2>
+                <div class="back-btn-container">
+                    <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                </div>
+            </div>
+            <div class="masonry-grid">
+                <!-- Gambar akan diisi otomatis oleh JavaScript -->
+            </div>
+            <div class="end-gallery"><p>End of Graduation Gallery</p></div>
+            <div class="back-btn-bottom">
+                <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- === LANDSCAPE & NATURE PAGE === -->
+    <div id="nature-view" class="view-section hidden">
+        <div class="container">
+            <div class="category-header">
+                <h2>Landscape & Nature</h2>
+                <div class="back-btn-container">
+                    <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                </div>
+            </div>
+            <div class="masonry-grid">
+                <!-- Gambar akan diisi otomatis oleh JavaScript -->
+            </div>
+            <div class="end-gallery"><p>End of Gallery</p></div>
+            <div class="back-btn-bottom">
+                <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- === STREET PAGE === -->
+    <div id="street-view" class="view-section hidden">
+        <div class="container">
+            <div class="category-header">
+                <h2>Street Photography</h2>
+                <div class="back-btn-container">
+                    <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                </div>
+            </div>
+            <div class="masonry-grid">
+                <!-- Gambar akan diisi otomatis oleh JavaScript -->
+            </div>
+            <div class="end-gallery"><p>End of Street Gallery</p></div>
+            <div class="back-btn-bottom">
+                <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- === EVENT DOCUMENTATION PAGE === -->
+    <div id="event-view" class="view-section hidden">
+        <div class="container">
+            <div class="category-header">
+                <h2>Event Documentation</h2>
+                <div class="back-btn-container">
+                    <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                </div>
+            </div>
+            <div class="masonry-grid">
+                <!-- Gambar akan diisi otomatis oleh JavaScript -->
+            </div>
+            <div class="end-gallery"><p>End of Event Gallery</p></div>
+            <div class="back-btn-bottom">
+                <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="close-lightbox" id="lightbox-close">&times;</button>
+        <button class="lightbox-nav prev-btn" id="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="lightbox-content">
+            <img src="" alt="Full view" id="lightbox-img">
+        </div>
+        <button class="lightbox-nav next-btn" id="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Link ke file JS terpisah -->
+    <script src="script.js"></script>
+</body>
+</html>
