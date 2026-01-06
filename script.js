@@ -56,11 +56,11 @@ const galleries = {
     "images/wedding/wedding-0259.webp",
     "images/wedding/wedding-0260.webp",
     "images/wedding/wedding-0261.webp",
-    "images/wedding/wedding.webp"
+    "images/wedding/wedding-01.webp"
     
   ],
   wisuda: [
-    "images/Wisuda/wisuda1.jpg",
+    "images/Wisuda/wisuda001.jpg",
     "images/Wisuda/wisuda2.jpg",
     "images/Wisuda/wisuda3.jpg",
     "images/Wisuda/wisuda4.jpg",
