@@ -1,3 +1,4 @@
+// --- PAGE NAVIGATION LOGIC ---
 function showHome() {
   // Sembunyikan semua view kategori (wedding, wisuda, dll)
   document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
@@ -69,7 +70,6 @@ const galleries = {
     "images/wedding/wedding-0260.webp",
     "images/wedding/wedding-0261.webp",
     "images/wedding/wedding-01.webp"
-    
   ],
   wisuda: [
     "images/Wisuda/wisuda-001.jpg",
@@ -205,9 +205,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// --- LIGHTBOX LOGIC (TANPA PERUBAHAN) ---
+// --- LIGHTBOX LOGIC ---
 let currentGalleryImages = [];
 let currentIndex = 0;
+
+// ✅ SWIPE DETECTION VARIABLES (BARU)
+let startX = 0;
+let startY = 0;
+let isSwiping = false;
+
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 
@@ -258,6 +264,7 @@ document.getElementById('lightbox-next').addEventListener('click', (e) => { e.st
 document.getElementById('lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
 lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
 
+// Keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
@@ -265,6 +272,41 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') prevImage();
 });
 
+// ✅ SWIPE GESTURE FOR MOBILE (BARU)
+lightbox.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
+  isSwiping = true;
+});
+
+lightbox.addEventListener('touchmove', (e) => {
+  if (!isSwiping) return;
+
+  const deltaX = e.touches[0].clientX - startX;
+  const deltaY = e.touches[0].clientY - startY;
+
+  // Only respond to horizontal swipes
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    e.preventDefault(); // Prevent page scroll during swipe
+  }
+});
+
+lightbox.addEventListener('touchend', (e) => {
+  if (!isSwiping) return;
+
+  const deltaX = e.changedTouches[0].clientX - startX;
+  const deltaY = e.changedTouches[0].clientY - startY;
+
+  if (deltaX < -50) {
+    nextImage(); // Swipe left → next
+  } else if (deltaX > 50) {
+    prevImage(); // Swipe right → previous
+  }
+
+  isSwiping = false;
+});
+
+// Smooth scroll tanpa hash
 function smoothScrollTo(elementId) {
   const target = document.getElementById(elementId);
   if (target) {
