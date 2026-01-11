@@ -1,12 +1,29 @@
 // --- PAGE NAVIGATION LOGIC ---
-function showHome() {
+function goToHome() {
   // Sembunyikan semua view kategori (wedding, wisuda, dll)
   document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
   
   // Tampilkan halaman utama (home-view)
   document.getElementById('home-view').classList.remove('hidden');
   
-  // Scroll ke bagian Portfolio (#categories) setelah sedikit delay
+  // Scroll ke bagian paling atas (Hero)
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+  // Hapus hash dari URL agar bersih
+  history.pushState('', document.title, window.location.pathname);
+}
+
+function goToPortfolio() {
+  // Sembunyikan semua view kategori
+  document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+  
+  // Tampilkan halaman utama
+  document.getElementById('home-view').classList.remove('hidden');
+  
+  // Scroll ke bagian Portfolio (#categories) setelah delay
   setTimeout(() => {
     const categories = document.getElementById('categories');
     if (categories) {
@@ -15,9 +32,52 @@ function showHome() {
         behavior: 'smooth'
       });
     }
-    // Hapus hash dari URL agar bersih
     history.pushState('', document.title, window.location.pathname);
-  }, 100); // Delay kecil agar DOM siap
+  }, 100);
+}
+
+function goToContact() {
+  // Sembunyikan semua view kategori
+  document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+  
+  // Tampilkan contact view
+  const contactSection = document.getElementById('contact');
+  if (contactSection) {
+    contactSection.classList.remove('hidden');
+  }
+  
+  // Scroll ke atas (ke bagian awal contact)
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+  history.pushState('', document.title, window.location.pathname);
+}
+// ✅ TAMBAHKAN DI SINI — SETELAH goToContact()
+function navigateTo(sectionId) {
+  // Sembunyikan semua view kategori
+  document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+  
+  // Tampilkan halaman utama
+  const homeView = document.getElementById('home-view');
+  if (homeView) {
+    homeView.classList.remove('hidden');
+  }
+  // Scroll ke section yang dituju setelah delay
+  setTimeout(() => {
+    const target = document.getElementById(sectionId);
+    if (target) {
+      const header = document.querySelector('nav');
+      const headerHeight = header ? header.offsetHeight : 0;
+      
+      window.scrollTo({
+        top: target.offsetTop - headerHeight,
+        behavior: 'smooth'
+      });
+    }
+    history.pushState('', document.title, window.location.pathname);
+  }, 100);
 }
 
 // --- GALLERY DATA (SESUAIKAN DENGAN FILE LOKALMU) ---
@@ -73,11 +133,26 @@ const galleries = {
   ],
   wisuda: [
     "images/Wisuda/wisuda-001.jpg",
-    "images/Wisuda/wisuda2.jpg",
-    "images/Wisuda/wisuda3.jpg",
-    "images/Wisuda/wisuda4.jpg",
-    "images/Wisuda/wisuda5.jpg",
-    "images/Wisuda/wisuda6.jpg"
+    "images/Wisuda/graduation-001.webp",
+    "images/Wisuda/graduation-002.webp",
+    "images/Wisuda/graduation-003.webp",
+    "images/Wisuda/graduation-004.webp",
+    "images/Wisuda/graduation-005.webp",
+    "images/Wisuda/graduation-006.webp",
+    "images/Wisuda/graduation-007.webp",
+    "images/Wisuda/graduation-008.webp",
+    "images/Wisuda/graduation-009.webp",
+    "images/Wisuda/graduation-010.webp",
+    "images/Wisuda/graduation-011.webp",
+    "images/Wisuda/graduation-012.webp",
+    "images/Wisuda/graduation-013.webp",
+    "images/Wisuda/graduation-014.webp",
+    "images/Wisuda/graduation-015.webp",
+    "images/Wisuda/graduation-016.webp",
+    "images/Wisuda/graduation-017.webp",
+    "images/Wisuda/graduation-018.webp",
+    "images/Wisuda/graduation-019.webp"
+    
   ],
   nature: [
     "images/Landscape/nature-01.webp",
@@ -86,7 +161,7 @@ const galleries = {
     "images/Landscape/nature-04.webp",
     "images/Landscape/nature-05.webp",
     "images/Landscape/nature-06.webp",
-    "images/Landscape/nature-07.webp",
+    "images/Landscape/nature-07.jpg",
     "images/Landscape/nature-08.webp",
     "images/Landscape/nature-09.webp",
     "images/Landscape/nature-10.webp",
@@ -99,7 +174,11 @@ const galleries = {
     "images/Landscape/nature-17.webp",
     "images/Landscape/nature-18.webp",
     "images/Landscape/nature-19.webp",
-    "images/Landscape/nature-20.webp"
+    "images/Landscape/nature-20.webp",
+    "images/Landscape/nature-21.jpg",
+    "images/Landscape/nature-22.jpg",
+    "images/Landscape/nature-23.jpg",
+    "images/Landscape/nature-24.jpg"
   ],
   street: [
     "images/street/street1.webp",
@@ -209,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
 let currentGalleryImages = [];
 let currentIndex = 0;
 
-// ✅ SWIPE DETECTION VARIABLES (BARU)
+// SWIPE DETECTION VARIABLES
 let startX = 0;
 let startY = 0;
 let isSwiping = false;
@@ -272,7 +351,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') prevImage();
 });
 
-// ✅ SWIPE GESTURE FOR MOBILE (BARU)
+// SWIPE GESTURE FOR MOBILE
 lightbox.addEventListener('touchstart', (e) => {
   startX = e.touches[0].clientX;
   startY = e.touches[0].clientY;
@@ -285,9 +364,8 @@ lightbox.addEventListener('touchmove', (e) => {
   const deltaX = e.touches[0].clientX - startX;
   const deltaY = e.touches[0].clientY - startY;
 
-  // Only respond to horizontal swipes
   if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    e.preventDefault(); // Prevent page scroll during swipe
+    e.preventDefault();
   }
 });
 
@@ -298,15 +376,15 @@ lightbox.addEventListener('touchend', (e) => {
   const deltaY = e.changedTouches[0].clientY - startY;
 
   if (deltaX < -50) {
-    nextImage(); // Swipe left → next
+    nextImage();
   } else if (deltaX > 50) {
-    prevImage(); // Swipe right → previous
+    prevImage();
   }
 
   isSwiping = false;
 });
 
-// Smooth scroll tanpa hash
+// Smooth scroll tanpa hash (tidak dipakai lagi, tapi tetap ada)
 function smoothScrollTo(elementId) {
   const target = document.getElementById(elementId);
   if (target) {
@@ -316,3 +394,23 @@ function smoothScrollTo(elementId) {
     });
   }
 }
+
+// === HAMBURGER MENU LOGIC ===
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.add('hidden');
+}
+
+document.getElementById('menu-toggle').addEventListener('click', function(e) {
+  e.stopPropagation();
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('hidden');
+});
+
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobile-menu');
+  const toggle = document.getElementById('menu-toggle');
+  
+  if (!menu.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+    menu.classList.add('hidden');
+  }
+});

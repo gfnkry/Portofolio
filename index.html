@@ -6,12 +6,12 @@
     <title>Gfnkry_ | Photography Portfolio</title>
     
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com  ">
+    <link rel="preconnect" href="https://fonts.gstatic.com  " crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter  :wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  ">
 
     
     <link rel="stylesheet" href="style.css">
@@ -19,129 +19,152 @@
 <body>
 
     <!-- NAV -->
-    <nav>
-        <a onclick="showHome()" class="logo">Gfnkry_</a>
-        <div class="nav-actions">
-            <button id="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+ <nav>
+  <a onclick="goToHome()" class="logo">Gfnkry_</a>
+
+  <div class="nav-actions">
+    <button id="theme-toggle" aria-label="Toggle Dark Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button id="menu-toggle" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+ <div id="mobile-menu" class="mobile-menu hidden">
+  <ul>
+    <li><button type="button" class="menu-link" onclick="navigateTo('hero'); closeMobileMenu()">Home</button></li>
+    <li><button type="button" class="menu-link" onclick="navigateTo('about'); closeMobileMenu()">About Me</button></li>
+    <li><button type="button" class="menu-link" onclick="navigateTo('categories'); closeMobileMenu()">Portfolio</button></li>
+    <li><button type="button" class="menu-link" onclick="navigateTo('contact'); closeMobileMenu()">Contact</button></li>
+  </ul>
+</div>
+</nav>
+
+   <!-- === HOME VIEW === -->
+<div id="home-view" class="view-section">
+    
+    <!-- Hero -->
+    <section id="hero">
+        <h1>Gfnkry_</h1>
+        <p>Capturing the Essence of the Moment</p>
+        <div class="cta-group">
+            <button type="button" class="btn" onclick="smoothScrollTo('categories')">PORTFOLIO</button>
         </div>
-    </nav>
+    </section>
 
-    <!-- === HOME VIEW === -->
-    <div id="home-view" class="view-section">
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/Profil1.jpg" alt="Gfnkry Profile">
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>Halo, saya Geofanni. Fotografer berbasis di Serang, Banten, dengan keahlian di street dan wedding photography. Saya menangkap momen-momen autentik dengan pendekatan dokumenter dan sentuhan emosional.</p>
+                    <div class="signature">- Gfnkry_</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HIGHLIGHTS (DIPINDAH KE SINI) -->
+    <section id="highlights" class="container">
+        <div class="preview-header">
+            <h3>Highlights</h3>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightboxFromHome(this)">
+                <img src="images/Highlight/highlight-09.jpg">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item" onclick="openLightboxFromHome(this)">
+                <img src="images/Highlight/highlight-02.webp">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item" onclick="openLightboxFromHome(this)">
+                <img src="images/Highlight/highlight-06.jpg">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item" onclick="openLightboxFromHome(this)">
+                <img src="images/Highlight/highlight-07.jpg">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item" onclick="openLightboxFromHome(this)">
+                <img src="images/Highlight/highlight-01.jpg">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item" onclick="openLightboxFromHome(this)">
+                <img src="images/Highlight/highlight-04.webp">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BROWSE GALLERIES (DITURUNKAN KE SINI) -->
+    <section id="categories" class="container">
+        <div class="section-header">
+            <h2>PORTFOLIO</h2>
+            <p class="subtitle">Select a category to view full collection</p>
+        </div>
         
-        <!-- Hero -->
-        <section id="hero">
-            <h1>Gfnkry_</h1>
-            <p>Capturing the Essence of the Moment</p>
-            <div class="cta-group">
-                <button type="button" class="btn" onclick="smoothScrollTo('categories')">Portfolio</button>
-                <button type="button" class="btn" onclick="smoothScrollTo('contact')">Contact</button>
-                
+        <div class="category-nav">
+            <!-- Wedding Card -->
+            <div class="cat-card" onclick="openPage('wedding')">
+                <img src="images/wedding/wedding-01.webp" alt="Wedding Photography">
+                <div class="cat-overlay">
+                    <span class="cat-title">Wedding Photography</span>
+                </div>
             </div>
-        </section>
+            <!-- Graduation Card -->
+            <div class="cat-card" onclick="openPage('wisuda')">
+                <img src="images/Wisuda/wisuda-001.jpg" alt="Graduation">
+                <div class="cat-overlay">
+                    <span class="cat-title">Graduation</span>
+                </div>
+            </div>
+            <!-- Landscape & Nature Card -->
+            <div class="cat-card" onclick="openPage('nature')">
+                <img src="images/Landscape/landscape-001.jpg" alt="Landscape & Nature">
+                <div class="cat-overlay">
+                    <span class="cat-title">Landscape & Nature</span>
+                </div>
+            </div>
+            <!-- Street Card -->
+            <div class="cat-card" onclick="openPage('street')">
+                <img src="images/street/DSC00076.jpg" alt="Street">
+                <div class="cat-overlay">
+                    <span class="cat-title">Street</span>
+                </div>
+            </div>
+            <!-- Event Documentation Card -->
+            <div class="cat-card" onclick="openPage('event')">
+                <img src="images/EventD/eventdoc-001.jpg" alt="Event Documentation">
+                <div class="cat-overlay">
+                    <span class="cat-title">Event Documentation</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- About -->
-        <section id="about">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-image">
-                        <img src="images/Profil1.jpg" alt="Gfnkry Profile">
-                    </div>
-                    <div class="about-text">
-                        <h2>About Me</h2>
-                        <p>Halo, saya Geofanni. Fotografer berbasis di Serang, Banten, dengan keahlian di street dan wedding photography. Saya menangkap momen-momen autentik dengan pendekatan dokumenter dan sentuhan emosional.</p>
-                        <div class="signature">- Gfnkry_</div>
-                    </div>
-                </div>
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <h2>Let's Create Together</h2>
+            <p>Ready to capture your special moments?</p>
+            <div class="social-links">
+                <a href="https://instagram.com/gfnkry_  " class="social-icon" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/6282267536734  " class="social-icon" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:geokaary@gmail.com" class="social-icon"><i class="far fa-envelope"></i></a>
             </div>
-        </section>
-
-        <!-- Categories Navigation -->
-        <section id="categories" class="container">
-            <div class="section-header">
-                <h2>Browse Galleries</h2>
-                <p class="subtitle">Select a category to view full collection</p>
-            </div>
-            
-            <div class="category-nav">
-                <!-- Wedding Card -->
-                <div class="cat-card" onclick="openPage('wedding')">
-                    <img src="images/wedding/wedding-01.webp" alt="Wedding Photography">
-                    <div class="cat-overlay">
-                        <span class="cat-title">Wedding Photography</span>
-                    </div>
-                </div>
-                <!-- Graduation Card -->
-                <div class="cat-card" onclick="openPage('wisuda')">
-                    <img src="images/Wisuda/wisuda-001.jpg" alt="Graduation">
-                    <div class="cat-overlay">
-                        <span class="cat-title">Graduation</span>
-                    </div>
-                </div>
-                <!-- Landscape & Nature Card -->
-                <div class="cat-card" onclick="openPage('nature')">
-                    <img src="images/Landscape/landscape-001.jpg" alt="Landscape & Nature">
-                    <div class="cat-overlay">
-                        <span class="cat-title">Landscape & Nature</span>
-                    </div>
-                </div>
-                <!-- Street Card -->
-                <div class="cat-card" onclick="openPage('street')">
-                    <img src="images/street/DSC00076.jpg" alt="Street">
-                    <div class="cat-overlay">
-                        <span class="cat-title">Street</span>
-                    </div>
-                </div>
-                <!-- Event Documentation Card -->
-                <div class="cat-card" onclick="openPage('event')">
-                    <img src="images/EventD/eventdoc-001.jpg" alt="Event Documentation">
-                    <div class="cat-overlay">
-                        <span class="cat-title">Event Documentation</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mini Preview -->
-            <div class="preview-header">
-                <h3>Highlights</h3>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="openLightboxFromHome(this)">
-                    <img src="images/Highlight/highlight-01.webp">
-                    <div class="overlay"><i class="fas fa-expand"></i></div>
-                </div>
-                <div class="gallery-item" onclick="openLightboxFromHome(this)">
-                    <img src="images/Highlight/highlight-02.webp">
-                    <div class="overlay"><i class="fas fa-expand"></i></div>
-                </div>
-                <div class="gallery-item" onclick="openLightboxFromHome(this)">
-                    <img src="images/Highlight/highlight-03.webp">
-                    <div class="overlay"><i class="fas fa-expand"></i></div>
-                </div>
-                <div class="gallery-item" onclick="openLightboxFromHome(this)">
-                    <img src="images/Highlight/highlight-04.webp">
-                    <div class="overlay"><i class="fas fa-expand"></i></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact">
-            <div class="container">
-                <h2>Let's Create Together</h2>
-                <p>Ready to capture your special moments?</p>
-                <div class="social-links">
-                    <a href="https://instagram.com/gfnkry_" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/6282267536734" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-                    <a href="mailto:geokaary@gmail.com" class="social-icon"><i class="far fa-envelope"></i></a>
-                </div>
-            </div>
-        </section>
-        
-        <footer>
-            <p>&copy; 2026 Gfnkry_ Photography. All Rights Reserved.</p>
-        </footer>
-    </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2026 Gfnkry_ Photography. All Rights Reserved.</p>
+    </footer>
+</div>
 
     <!-- === WEDDING PAGE === -->
     <div id="wedding-view" class="view-section hidden">
@@ -149,7 +172,7 @@
             <div class="category-header">
                 <h2>Wedding Stories</h2>
                 <div class="back-btn-container">
-                    <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                    <button onclick="goToPortfolio()" class="btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</button>
                 </div>
             </div>
             <div class="masonry-grid">
@@ -157,7 +180,7 @@
             </div>
             <div class="end-gallery"><p>End of Wedding Gallery</p></div>
             <div class="back-btn-bottom">
-                <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                <button onclick="goToPortfolio()" class="btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</button>
             </div>
         </div>
     </div>
@@ -168,7 +191,7 @@
             <div class="category-header">
                 <h2>Graduation Moments</h2>
                 <div class="back-btn-container">
-                    <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                    <button onclick="goToPortfolio()" class="btn"><i class="fas fa-arrow-left"></i> Back to Portfolio </button>
                 </div>
             </div>
             <div class="masonry-grid">
@@ -176,7 +199,7 @@
             </div>
             <div class="end-gallery"><p>End of Graduation Gallery</p></div>
             <div class="back-btn-bottom">
-                <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                <button onclick="goToPortfolio()" class="btn"><i class="fas fa-arrow-left"></i> Back to Portfolio </button>
             </div>
         </div>
     </div>
@@ -187,7 +210,7 @@
             <div class="category-header">
                 <h2>Landscape & Nature</h2>
                 <div class="back-btn-container">
-                    <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                    <button onclick="goToPortfolio()" class="btn"><i class="fas fa-arrow-left"></i> Back to Portfolio </button>
                 </div>
             </div>
             <div class="masonry-grid">
@@ -195,7 +218,7 @@
             </div>
             <div class="end-gallery"><p>End of Gallery</p></div>
             <div class="back-btn-bottom">
-                <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                <button onclick="goToPortfolio()" class="btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</button>
             </div>
         </div>
     </div>
@@ -206,7 +229,7 @@
             <div class="category-header">
                 <h2>Street Photography</h2>
                 <div class="back-btn-container">
-                    <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                    <button onclick="goToPortfolio()" class="btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</button>
                 </div>
             </div>
             <div class="masonry-grid">
@@ -214,7 +237,7 @@
             </div>
             <div class="end-gallery"><p>End of Street Gallery</p></div>
             <div class="back-btn-bottom">
-                <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                <button onclick="goToPortfolio()" class="btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</button>
             </div>
         </div>
     </div>
@@ -225,7 +248,7 @@
             <div class="category-header">
                 <h2>Event Documentation</h2>
                 <div class="back-btn-container">
-                    <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                    <button onclick="goToPortfolio()" class="btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</button>
                 </div>
             </div>
             <div class="masonry-grid">
@@ -233,7 +256,7 @@
             </div>
             <div class="end-gallery"><p>End of Event Gallery</p></div>
             <div class="back-btn-bottom">
-                <button onclick="showHome()" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                <button onclick="goToPortfolio()" class="btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</button>
             </div>
         </div>
     </div>
