@@ -1,10 +1,22 @@
-// --- PAGE NAVIGATION LOGIC ---
 function showHome() {
-    // Hide all views
-    document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
-    // Show Home
-    document.getElementById('home-view').classList.remove('hidden');
-    window.scrollTo(0, 0);
+  // Sembunyikan semua view kategori (wedding, wisuda, dll)
+  document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+  
+  // Tampilkan halaman utama (home-view)
+  document.getElementById('home-view').classList.remove('hidden');
+  
+  // Scroll ke bagian Portfolio (#categories) setelah sedikit delay
+  setTimeout(() => {
+    const categories = document.getElementById('categories');
+    if (categories) {
+      window.scrollTo({
+        top: categories.offsetTop,
+        behavior: 'smooth'
+      });
+    }
+    // Hapus hash dari URL agar bersih
+    history.pushState('', document.title, window.location.pathname);
+  }, 100); // Delay kecil agar DOM siap
 }
 
 // --- GALLERY DATA (SESUAIKAN DENGAN FILE LOKALMU) ---
@@ -60,7 +72,7 @@ const galleries = {
     
   ],
   wisuda: [
-    "images/Wisuda/wisuda001.jpg",
+    "images/Wisuda/wisuda-001.jpg",
     "images/Wisuda/wisuda2.jpg",
     "images/Wisuda/wisuda3.jpg",
     "images/Wisuda/wisuda4.jpg",
@@ -252,3 +264,13 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') nextImage();
     if (e.key === 'ArrowLeft') prevImage();
 });
+
+function smoothScrollTo(elementId) {
+  const target = document.getElementById(elementId);
+  if (target) {
+    window.scrollTo({
+      top: target.offsetTop,
+      behavior: 'smooth'
+    });
+  }
+}
