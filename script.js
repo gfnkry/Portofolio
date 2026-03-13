@@ -209,7 +209,11 @@ const galleries = {
     "images/EventD/event-09.webp",
     "images/EventD/event-10.webp",
     "images/EventD/event-11.webp",
-    "images/EventD/event-12.webp"
+    "images/EventD/event-12.webp",
+    "images/EventD/event-13.webp",
+    "images/EventD/event-14.webp",
+    "images/EventD/event-15.webp",
+    "images/EventD/event-16.webp"
   ]
 };
 
